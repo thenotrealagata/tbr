@@ -1,0 +1,8 @@
+<div *ngIf="library; else notFound">
+    <div *ngFor="let book of books">
+        {{ book.volumeInfo.title }}
+    </div>
+</div>
+<ng-template #notFound>
+    Not found!
+</ng-template>

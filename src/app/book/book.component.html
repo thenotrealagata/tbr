@@ -1,0 +1,16 @@
+<div *ngIf="book; else notFound">
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <img [src]="book.volumeInfo.imageLinks.small" class="max-w-sm rounded-lg shadow-2xl" />
+            <div>
+                <h1 class="text-5xl font-bold">{{ book.volumeInfo.title }} by {{ book.volumeInfo.authors |
+                    authorNameFormat }}</h1>
+                <h2>{{ book.volumeInfo.subtitle }}</h2>
+                <div [innerHTML]="book.volumeInfo.description"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #notFound>
+    <h1>Book not found!</h1>
+</ng-template>
