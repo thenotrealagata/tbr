@@ -1,13 +1,13 @@
-<div class="flex flex-col">
-    <div class="form-control w-52">
-        <label class="cursor-pointer label">
-            <span class="label-text">Show description</span>
-            <input id="descriptionToggle" type="checkbox" class="toggle toggle-primary" (checked)="showDescription"
-                (click)="changeBookDisplay()" />
-        </label>
-    </div>
-</div>
 <div *ngIf="library; else notFound" class="max-w-5xl mx-auto my-5">
+    <div class="flex flex-col">
+        <div class="form-control w-52">
+            <label class="cursor-pointer label">
+                <span class="label-text">Show description</span>
+                <input id="descriptionToggle" type="checkbox" class="toggle toggle-primary" (checked)="showDescription"
+                    (click)="changeBookDisplay()" />
+            </label>
+        </div>
+    </div>
     <div *ngIf="showDescription; else showCovers">
         <div *ngFor="let book of books" class="card card-side bg-base-100 shadow-xl">
             <figure><img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="Book cover" /></figure>

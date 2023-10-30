@@ -25,6 +25,10 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.bookshelf == undefined) this.getLibrary();
+    else {
+      this.library = this.bookshelf;
+      this.books = this.library.items;
+    }
   }
 
   getLibrary(): void {
