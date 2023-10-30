@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { AuthorNameFormat } from './authors.pipe';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     BookComponent,
     LibraryComponent,
     SearchComponent,
-    AuthorNameFormat
+    AuthorNameFormat,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

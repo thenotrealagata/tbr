@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({ name: 'authorNameFormat' })
 export class AuthorNameFormat implements PipeTransform {
     transform(authors: string[]): string {
+        if (authors == null) return "";
         let str = "";
         for (let i = 0; i < authors.length; i++) {
             str += authors[i];

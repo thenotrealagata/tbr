@@ -1,7 +1,33 @@
-<div *ngIf="library; else notFound">
-    <div *ngFor="let book of books">
-        {{ book.volumeInfo.title }}
+<div class="flex flex-col">
+    <div class="form-control w-52">
+        <label class="cursor-pointer label">
+            <span class="label-text">Show description</span>
+            <input id="descriptionToggle" type="checkbox" class="toggle toggle-primary" (checked)="showDescription"
+                (click)="changeBookDisplay()" />
+        </label>
     </div>
+</div>
+<div *ngIf="library; else notFound" class="max-w-5xl mx-auto my-5">
+    <div *ngIf="showDescription; else showCovers">
+        <div *ngFor="let book of books" class="card card-side bg-base-100 shadow-xl">
+            <figure><img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="Book cover" /></figure>
+            <div class="card-body">
+                <h2 class="card-title">{{ book.volumeInfo.title }}</h2>
+                <p>by {{ book.volumeInfo.authors | authorNameFormat }}</p>
+                <div class="card-actions justify-end">
+                    <a class="btn btn-primary" routerLink="/books/{{book.id}}">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #showCovers>
+        <div class="grid gap-4 grid-cols-5">
+            <div class="flex" *ngFor="let book of books">
+                <a routerLink="/books/{{book.id}}"><img [src]="book.volumeInfo.imageLinks?.thumbnail"
+                        alt="Book cover" /></a>
+            </div>
+        </div>
+    </ng-template>
 </div>
 <ng-template #notFound>
     Not found!

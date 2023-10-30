@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Book } from 'book';
@@ -14,6 +14,9 @@ export class LibraryComponent implements OnInit {
   library: Library | undefined;
   books: Book[] | undefined;
 
+  @Input() showDescription?: boolean = true;
+  @Input() bookshelf?: Library;
+
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
@@ -21,7 +24,7 @@ export class LibraryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getLibrary();
+    if (this.bookshelf == undefined) this.getLibrary();
   }
 
   getLibrary(): void {
@@ -31,6 +34,10 @@ export class LibraryComponent implements OnInit {
       this.books = library.items;
       console.log(this.books);
     });
+  }
+
+  changeBookDisplay(): void {
+    this.showDescription = !this.showDescription;
   }
 }
 
